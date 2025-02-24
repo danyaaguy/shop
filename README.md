@@ -1,66 +1,86 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Веб-приложение для управления товарами и заказами  
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Описание проекта  
 
-## About Laravel
+Данное веб-приложение создано с использованием фреймворка Laravel и предоставляет функционал для управления товарами и заказами в интернет-магазине.  
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Функциональные возможности  
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 1. Управление товарами  
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Добавление, редактирование, удаление и просмотр товаров.  
+- Просмотр списка товаров с сокращенной информацией (название, цена, категория).  
+- Просмотр полной информации о товаре.  
 
-## Learning Laravel
+### 2. Управление заказами  
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Создание заказа с возможностью добавления одного наименования товара в количестве 1 штуки или более.  
+- Заказ включает:  
+  - ФИО покупателя (обязательное поле)  
+  - Дата создания (обязательное поле)  
+  - Статус заказа (новый или выполнен; по умолчанию новый)  
+  - Комментарий покупателя.  
+- Просмотр списка заказов с отображением:  
+  - Номера заказа (ID)  
+  - Даты создания  
+  - ФИО покупателя  
+  - Статуса заказа  
+  - Итоговой цены.  
+- Просмотр заказа с полной информацией и возможность изменения статуса на "выполнен".  
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 3. Категории для товаров  
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Создание миграции для таблицы `categories`, содержащей:  
+  - ID (первичный ключ)  
+  - Название (строка)  
+  
+Заполнение таблицы следующими данными: легкий, хрупкий, тяжелый.  
 
-## Laravel Sponsors
+### 4. Связи между таблицами  
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- Товары привязаны к категориям (один ко многим).  
+- В заказе может быть только один товар (одно наименование) (один ко многим).  
 
-### Premium Partners
+### 5. Требования к товарам  
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Каждый товар должен иметь:  
+- Название (обязательное поле)  
+- Категория (обязан привязываться к одной категории)  
+- Описание  
+- Цена (в рублях, с учетом копеек; обязательное поле)  
 
-## Contributing
+## Административный интерфейс  
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- Управление товарами доступно по адресу: `/admin/products`  
+- Управление заказами доступно по адресу: `/admin/orders`  
+- Возможность заказа доступна по корневому адресу: `/`  
 
-## Code of Conduct
+## Технологии  
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- PHP  
+- Laravel (https://laravel.com/docs/9.x)  
+- Git для контроля версий  
 
-## Security Vulnerabilities
+## Установка  
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1. Клонируйте репозиторий:  
+   ```bash
+   git clone <ссылка на репозиторий>  
+   cd <папка проекта>
+   ```
 
-## License
+2. Установите зависимости:
+```bash
+composer install
+```
+Создайте файл .env на основе .env.example и настройте параметры подключения к базе данных.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+3. Выполните миграции:
+```bash
+php artisan migrate
+```
+
+4. Запустите сервер:
+```bash
+php artisan serve
+```
